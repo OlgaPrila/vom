@@ -1,5 +1,11 @@
 package com.rvcode.gridportal.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.Set;
+
 /**
      Copyright (c) 2012 Tanya Guza  <tanya.guza@gmail.com>
 
@@ -19,15 +25,49 @@ package com.rvcode.gridportal.domain;
      along with GridPortal.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+@Entity
 public class User {
     public enum AccountType {
         ADMIN, USER
     }
 
+    private Integer id;
     private String login;
     private String password;
     private AccountType accountType;
     private UserGroup group;
+    private Set<Task> tasks;
+    private Set<Certificate> certificates;
+    private Set<Resource> resources;
+
+    @OneToMany(mappedBy = "owner")
+    public Set<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(Set<Resource> resources) {
+        this.resources = resources;
+    }
+
+    @OneToMany(mappedBy = "owner")
+    public Set<Certificate> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(Set<Certificate> certificates) {
+        this.certificates = certificates;
+    }
+
+
+    @OneToMany(mappedBy = "owner")
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public String getLogin() {
         return login;
@@ -53,11 +93,21 @@ public class User {
         this.accountType = accountType;
     }
 
+    @ManyToOne
     public UserGroup getGroup() {
         return group;
     }
 
     public void setGroup(UserGroup group) {
         this.group = group;
+    }
+
+    @Id
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

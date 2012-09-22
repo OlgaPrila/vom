@@ -1,5 +1,8 @@
 package com.rvcode.gridportal.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 /**
  Copyright (c) 2012 Tanya Guza  <tanya.guza@gmail.com>
@@ -20,6 +23,7 @@ import java.util.Date;
  along with GridPortal.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+@Entity
 public class Task {
 
     public enum TaskState {
@@ -30,6 +34,7 @@ public class Task {
         SUCCESS, FAILED
     }
 
+    private Integer id;
     private User owner;
     private Date loaded;
     private Date finished;
@@ -44,6 +49,7 @@ public class Task {
         this.loaded = loaded;
     }
 
+    @ManyToOne
     public User getOwner() {
         return owner;
     }
@@ -74,5 +80,14 @@ public class Task {
 
     public void setResult(TaskResult result) {
         this.result = result;
+    }
+
+    @Id
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

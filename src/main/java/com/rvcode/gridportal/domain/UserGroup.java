@@ -1,5 +1,8 @@
 package com.rvcode.gridportal.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 /**
@@ -21,7 +24,10 @@ import java.util.Set;
  along with GridPortal.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+@Entity
 public class UserGroup {
+
+    private Integer id;
     private String name;
     private Set<User> users;
 
@@ -33,11 +39,21 @@ public class UserGroup {
         this.name = name;
     }
 
+    @OneToMany
     public Set<User> getUsers() {
         return users;
     }
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    @Id
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
