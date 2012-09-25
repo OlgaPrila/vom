@@ -25,23 +25,14 @@ import java.util.Date;
  */
 
 @Entity
-public class Certificate {
+public class Certificate extends DomainObject {
 
-    private Integer id;
     private String fileName;
     private String description;
     private Date issued;
     private Date expires;
     private User owner;
 
-    @Id
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getFileName() {
         return fileName;

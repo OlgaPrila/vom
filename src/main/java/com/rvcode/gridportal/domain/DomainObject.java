@@ -1,8 +1,8 @@
 package com.rvcode.gridportal.domain;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  Copyright (c) 2012 Tanya Guza  <tanya.guza@gmail.com>
@@ -24,29 +24,21 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
-public class Resource extends DomainObject {
+public class DomainObject {
 
-    public enum ResourceType {
-        COMPUTING_ELEMENT, STORAGE_ELEMENT
+/**
+    Unique identifier
+
+*/
+    private Integer id;
+
+
+    @Id
+    public Integer getId() {
+        return id;
     }
 
-    private User owner;
-    private ResourceType resourceType;
-
-    @ManyToOne
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    public ResourceType getResourceType() {
-        return resourceType;
-    }
-
-    public void setResourceType(ResourceType resourceType) {
-        this.resourceType = resourceType;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

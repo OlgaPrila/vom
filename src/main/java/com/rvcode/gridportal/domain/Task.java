@@ -24,7 +24,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Task {
+public class Task extends DomainObject {
 
     public enum TaskState {
           WAITING, RUNNING, FINISHED
@@ -34,7 +34,6 @@ public class Task {
         SUCCESS, FAILED
     }
 
-    private Integer id;
     private User owner;
     private Date loaded;
     private Date finished;
@@ -82,12 +81,4 @@ public class Task {
         this.result = result;
     }
 
-    @Id
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

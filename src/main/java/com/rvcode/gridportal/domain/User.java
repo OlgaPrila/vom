@@ -27,12 +27,11 @@ import java.util.Set;
 
 
 @Entity
-public class User {
+public class User extends DomainObject {
     public enum AccountType {
         ADMIN, USER
     }
 
-    private Integer id;
     private String login;
     private String password;
     private AccountType accountType;
@@ -102,12 +101,4 @@ public class User {
         this.group = group;
     }
 
-    @Id
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }
